@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        // Verifica se o usuário NÃO está em um dispositivo móvel
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (!isMobile) {
+            // Se estiver no computador/notebook, redireciona para o artigo
+            window.location.href = "https://turquesabemestar.com.br/cuidados-com-a-beleza-e-a-importancia-para-a-autoestima-feminina/";
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo Privado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030000;
+            --box-bg: #0a0000;
+            --text-color: #ffffff;
+            --primary-red: #d10000;
+            --primary-red-hover: #ff0000;
+            --dark-red: #3a0000;
+            --border-red: #4a0000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container styling to look like a mobile view on desktop */
+        .app-container {
+            width: 100%;
+            max-width: 400px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Screens */
+        .screen {
+            display: none;
+            width: 100%;
+            padding: 20px;
+            animation: fadeIn 0.4s ease;
+        }
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ----- SCREEN 1 ----- */
+        .card-s1 {
+            background-color: var(--box-bg);
+            border: 1px solid var(--border-red);
+            border-radius: 24px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(209, 0, 0, 0.15);
+        }
+
+        .subtitle-s1 {
+            color: var(--primary-red);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .title-s1 {
+            font-size: 26px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .desc-s1 {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 35px;
+            line-height: 1.4;
+        }
+
+        /* Buttons */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+
+        .btn-red {
+            background: var(--primary-red);
+            color: white;
+            margin-bottom: 15px;
+            box-shadow: inset 0 -3px 0 rgba(0,0,0,0.2), 0 5px 15px rgba(209, 0, 0, 0.4);
+        }
+
+        .btn-red:active {
+            transform: translateY(2px);
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,0.2), 0 2px 5px rgba(209, 0, 0, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        .btn-outline:active {
+            background-color: #111;
+        }
+
+        /* ----- SCREEN 2 ----- */
+        .card-s2 {
+            border: 1px solid var(--border-red);
+            border-radius: 30px;
+            padding: 30px 20px;
+            background-color: var(--box-bg);
+            box-shadow: 0 0 60px rgba(209, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glow effect top right */
+        .glow-top-right {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(209,0,0,0.5) 0%, rgba(209,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .header-s2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle-s2 {
+            color: var(--primary-red);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% { transform: translateY(-50%) translate(0, 0); }
+            50% { transform: translateY(-50%) translate(4px, -4px); }
+        }
+
+        .icon-arrow {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-red);
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1;
+            animation: bounceArrow 1.5s infinite ease-in-out;
+        }
+
+        .title-s2 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-box {
+            display: flex;
+            align-items: center;
+            background-color: #140000;
+            border: 1px solid var(--border-red);
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+
+        .step-num {
+            color: var(--primary-red);
+            font-size: 22px;
+            font-weight: 900;
+            margin-right: 15px;
+            min-width: 25px;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: #e0e0e0;
+            line-height: 1.4;
+        }
+
+        .step-text strong {
+            color: var(--primary-red);
+        }
+
+        .gif-box {
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gif-box img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* ----- MODAL ----- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background-color: #1a1a1a;
+            border: 1px solid var(--primary-red);
+            border-radius: 24px;
+            padding: 40px 25px 30px;
+            width: 90%;
+            max-width: 340px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(209, 0, 0, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .modal-text {
+            font-size: 15px;
+            color: #d0d0d0;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .modal-text strong {
+            color: white;
+            font-weight: 900;
+        }
+
+        @keyframes whiteGlow {
+            0% { box-shadow: inset 0 -3px 0 rgba(0,0,0,0.1), 0 0 10px rgba(255,255,255,0.3); }
+            50% { box-shadow: inset 0 -3px 0 rgba(0,0,0,0.1), 0 0 25px rgba(255,255,255,0.8); }
+            100% { box-shadow: inset 0 -3px 0 rgba(0,0,0,0.1), 0 0 10px rgba(255,255,255,0.3); }
+        }
+
+        .btn-white {
+            background-color: white;
+            color: black;
+            margin-bottom: 20px;
+            box-shadow: inset 0 -3px 0 rgba(0,0,0,0.1);
+            animation: whiteGlow 2s infinite ease-in-out;
+        }
+
+        .btn-white:active {
+            transform: translateY(2px);
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+
+        .link-cancel {
+            color: #555;
+            text-decoration: underline;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+
+        <!-- Screen 2: Required Step -->
+       <div id="screen2" class="screen active">
+            <div class="card-s2">
+                <div class="glow-top-right"></div>
+                
+                <div class="header-s2">
+                    <div class="subtitle-s2">PASSO OBRIGATÓRIO</div>
+                    <div class="icon-arrow">↗</div>
+                </div>
+                
+                <h1 class="title-s2">Libere meu acesso:</h1>
+
+                <div class="steps-container">
+                    <div class="step-box">
+                        <span class="step-num">1</span>
+                        <span class="step-text">Toque na Seta/3 pontos lá no topo<br>direito.</span>
+                    </div>
+                    <div class="step-box">
+                        <span class="step-num">2</span>
+                        <span class="step-text">Clique na opção <strong style="color: red;">"Abrir no<br>Navegador"</strong> .</span>
+                    </div>
+                </div>
+
+                <div class="gif-box">
+                    <img src="https://i.imgur.com/sR1Gjbv.gif" alt="Tutorial Abrir no Navegador">
+                </div>
+
+                <button class="btn btn-red" onclick="openModal()">JÁ ABRI NO NAVEGADOR</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-card">
+            <h2 class="modal-title">TEM CERTEZA?</h2>
+            <p class="modal-text">Para entrar no meu <strong>Grupo Secreto</strong> e ver as fotos, você precisa garantir que abriu no navegador (Chrome/Safari).</p>
+            
+            <!-- COLOQUE SEU LINK ABAIXO DENTRO DAS ASPAS SIMPLES ONDE DIZ 'SEU_LINK_AQUI' -->
+            <button class="btn btn-white" onclick="window.location.href='https://t.me/amaeefilha_bot'">SIM, ME LEVA AGORA!</button>
+            <br>
+            <a class="link-cancel" onclick="closeModal()">AINDA NÃO ABRI</a>
+        </div>
+    </div>
+
+    <script>
+        function showScreen2() {
+            document.getElementById('screen1').classList.remove('active');
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                document.getElementById('screen2').classList.add('active');
+            }, 50); // slight delay for smooth transition
+        }
+
+        function openModal() {
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
